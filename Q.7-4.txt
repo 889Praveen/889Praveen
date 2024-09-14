@@ -1,0 +1,1 @@
+7-4:SELECT dept.dept_name,COUNT(emp.emp_Dept_Id) FROM emp,dept WHERE dept.dept_id=emp.emp_Dept_Id GROUP BY emp.emp_Dept_Id;

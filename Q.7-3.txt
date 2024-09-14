@@ -1,0 +1,1 @@
+7-3:SELECT dept.dept_name ,MAX(emp.emp_salary) FROM dept,emp WHERE dept.dept_id=emp.emp_Dept_Id GROUP BY dept.dept_name;
