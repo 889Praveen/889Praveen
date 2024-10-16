@@ -1,0 +1,38 @@
+8:
+ CREATE TABLE account(acc_no int amount decimal(10,2));
+ CREATE TRIGGER ins_sum BEFORE INSERT ON account FOR EACH ROW SET @sum=@sum +NEW.amount;
+9:
+SET @sum=0;
+INSERT into account VALUES(137,14.98),(141,1937.50),(127,-100.00);
+SELECT @sum AS 'Total Amount  Inserted';
+
+
+Setting environment for using XAMPP for Windows.
+st@USER82 c:\xampp
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 558
+Server version: 10.4.17-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use mca2024praveen
+Database changed
+MariaDB [mca2024praveen]> SET @sum=0;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [mca2024praveen]> INSERT into account VALUES(137,14.98),(141,1937.50),(127,-100.00);
+Query OK, 3 rows affected (0.136 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [mca2024praveen]> SELECT @sum AS 'Total Amount  Inserted';
++------------------------+
+| Total Amount  Inserted |
++------------------------+
+|                1852.48 |
++------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [mca2024praveen]>
