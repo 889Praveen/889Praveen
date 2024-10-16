@@ -1,0 +1,7 @@
+8:
+ CREATE TABLE account(acc_no int amount decimal(10,2));
+ CREATE TRIGGER ins_sum BEFORE INSERT ON account FOR EACH ROW SET @sum=@sum +NEW.amount;
+9:
+SET @sum=0;
+INSERT into account VALUES(137,14.98),(141,1937.50),(127,-100.00);
+SELECT @sum AS 'Total Amount  Inserted';

@@ -1,0 +1,1 @@
+CREATE TABLE `mca2024praveen`.`p` ( `pno` CHAR(3) NOT NULL , `pname` VARCHAR(20) NOT NULL , `color` VARCHAR(10) NOT NULL , `p_city` VARCHAR(25) NOT NULL , PRIMARY KEY (`pno`(3))) ENGINE = InnoDB; 

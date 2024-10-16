@@ -1,0 +1,30 @@
+1:SELECT * FROM `p` WHERE p_city='Landon';
+
+2:SELECT pname,MAX(weight) FROM p;
+
+3:SELECT * FROM p WHERE color='Red';
+
+4:SELECT s.sname,s.s_city,sp.qty FROM s,sp WHERE s.sno=sp.sno AND sp.qty>200 
+
+5:SELECT * FROM `p` WHERE weight=(SELECT MAX(weight) FROM p WHERE weight<(SELECT MAX(weight) FROM p)) 
+                             or
+5:SELECT p.weight FROM p ORDER BY weight DESC LIMIT 1 OFFSET 1 
+
+6:SELECT sp.sno,sp.qty FROM p,sp WHERE p.pno=sp.pno AND p.weight=(SELECT MAX(weight) FROM p) 
+
+7:SELECT DISTINCT s.sname,sp.qty FROM s,p,sp WHERE s.sno=sp.sno AND p.pno=sp.pno AND p.color="Red"
+
+8:SELECT  s.sname,p.p_city,sp.qty FROM s,p,sp WHERE s.sno=sp.sno AND p.pno=sp.pno AND s_status<30;
+
+9:SELECT sp.sno,sum(sp.qty) FROM sp GROUP BY(sp.sno) 
+
+10:SELECT sp.pno,sum(sp.qty) FROM sp GROUP BY(sp.pno) 
+
+11:SELECT p.pname,sum(sp.qty) FROM sp,p GROUP BY (sp.pno) 
+
+12:SELECT sp.sno,sum(sp.qty) FROM s,sp WHERE s.sno=sp.sno AND s.sno<'s4' GROUP BY sp.sno
+                                   or
+12:SELECT sp.sno,sum(sp.qty) FROM s,sp WHERE s.sno=sp.sno AND s.sno<'sp.s4' GROUP BY sp.sno
+
+7-1:SELECT dept.Dept_name,MAX(emp.Emp_salary) FROM dept,emp WHERE emp.Emp_Dept_Id=dept.Dept_id GROUP BY Dept_id;
+7-2:SELECT dept.Dept_name,COUNT(emp.Emp_Dept_Id) FROM dept,emp WHERE dept.Dept_id=emp.Emp_Dept_Id GROUP BY Emp_Dept_Id;
