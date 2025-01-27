@@ -1,1 +1,0 @@
-6-1:select emp.emp_name ,dept.dept_name ,emp2.emp_name,dept2.dept_name from emp,dept,emp AS emp2,dept AS dept2 where emp.emp_Dept_Id=dept.dept_id AND emp.emp_boss_Id=emp2.emp_Id AND emp.emp_Dept_Id=dept2.dept_id;
