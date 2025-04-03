@@ -1,0 +1,31 @@
+if (rowsAffected > 0) {
+    out.println("<h2 style='color:green; text-align:center;'>Data inserted successfully!</h2>");
+
+    // SQL Select Statement to fetch the inserted data
+    String selectSql = "SELECT * FROM user_info WHERE user_id = ?";
+    PreparedStatement psSelect = conn.prepareStatement(selectSql);
+    psSelect.setString(1, id);
+
+    ResultSet rs = psSelect.executeQuery();
+
+    // Display the inserted data in a styled table
+    out.println("<h3 style='text-align:center;'>Inserted Data:</h3>");
+    out.println("<table style='width:60%; margin: 0 auto; border-collapse: collapse;'>");
+    out.println("<tr style='background-color:#f2f2f2;'><th style='padding:10px; text-align:left;'>User ID</th><th style='padding:10px; text-align:left;'>User Name</th><th style='padding:10px; text-align:left;'>Owner Name</th></tr>");
+
+    while (rs.next()) {
+        out.println("<tr>");
+        out.println("<td style='padding:10px; border: 1px solid #ddd;'>" + rs.getString("user_id") + "</td>");
+        out.println("<td style='padding:10px; border: 1px solid #ddd;'>" + rs.getString("user_name") + "</td>");
+        out.println("<td style='padding:10px; border: 1px solid #ddd;'>" + rs.getString("owner_name") + "</td>");
+        out.println("</tr>");
+    }
+
+    out.println("</table>");
+
+    // Close the ResultSet and PreparedStatement
+    rs.close();
+    psSelect.close();
+} else {
+    out.println("<h2 style='color:red; text-align:center;'>Data insertion failed!</h2>");
+}
